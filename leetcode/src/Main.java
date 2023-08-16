@@ -81,3 +81,45 @@ class Solution {
         }
     }
 }
+
+
+class Solution {
+    public int missingNumber(int[] nums) {
+        cyclicsort(nums);
+        //now in cyclic sort every number should be at correct index i.e. i == a[i] as this array starts from 0
+        for(int i=0,k=nums.length; i<k; i++){
+            if(nums[i] != i){
+                return i;
+            }
+        }
+
+        //else the element that can't fit in the array i.e element = nums.length. return that
+        return nums.length;
+    }
+
+//missing number cyclic sort
+    static void cyclicsort(int[] arr){
+        int i = 0;
+        //here we have to ignore the element == nums.length as there is no room for it in the array
+
+        while ( i< arr.length){
+            if(arr[i]==arr.length){
+                i++;
+                continue;
+            }
+            int nowcorrectindex = arr[i];
+            if(arr[nowcorrectindex] != arr[i]){
+                swap(arr,i,nowcorrectindex);
+            }
+            else{
+                i++;
+            }
+        }
+    }
+
+    static void swap(int[] arr,int from ,int to){
+        int temp = arr[from];
+        arr[from] = arr[to];
+        arr[to] = temp;
+    }
+}
