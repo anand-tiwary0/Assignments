@@ -123,3 +123,350 @@ class Solution {
         arr[to] = temp;
     }
 }
+
+
+//https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/submissions/
+
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        cyclicsort(nums);
+        ArrayList<Integer> missing = new ArrayList<>(2);
+        for(int i=0; i<nums.length; i++){
+            if(nums[i] != i+1){
+                missing.add(i+1);
+            }
+        }
+        return missing;
+    }
+
+    static void cyclicsort(int[] nums){
+        int i = 0;
+        while(i<nums.length){
+            int correctindex = nums[i]-1;
+            if(nums[correctindex] != nums[i]){
+                swap(nums,i,correctindex);
+            }
+            else{
+                i++;
+            }
+        }
+    }
+
+    static void swap(int[] nums,int from, int to){
+        int temp = nums[from];
+        nums[from] = nums[to];
+        nums[to] = temp;
+    }
+}
+
+
+//https://leetcode.com/problems/find-the-duplicate-number/submissions/
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int i = 0;
+        while(i<nums.length){
+            if(nums[i]!=i+1){
+                //case1 - the number is unique and missplaceced just swap
+                int correctindex = nums[i]-1;
+                if(nums[correctindex] != nums[i]){
+                    swap(nums,i,correctindex);
+                }
+                else{
+                    return nums[i];
+                }
+            }
+            else{
+                i++;
+            }
+        }
+        return -1;
+    }
+
+    static void swap(int[] nums,int from, int to){
+        int temp = nums[from];
+        nums[from] = nums[to];
+        nums[to] = temp;
+    }
+}
+
+
+
+//https://leetcode.com/problems/find-all-duplicates-in-an-array/submissions/
+
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        cyclicsort(nums);
+        ArrayList<Integer> obj = new ArrayList<>(1);
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i]!=i+1){
+                obj.add(nums[i]);
+            }
+        }
+        return obj;
+    }
+
+
+
+
+
+    static void cyclicsort(int[] nums){
+        int i = 0;
+        while(i<nums.length){
+            int correctindex = nums[i]-1;
+            if(nums[correctindex] != nums[i]){
+                swap(nums,i,correctindex);
+            }
+            else{
+                i++;
+            }
+        }
+    }
+
+    static void swap(int[] nums,int from, int to){
+        int temp = nums[from];
+        nums[from] = nums[to];
+        nums[to] = temp;
+    }
+}
+
+
+//https://leetcode.com/problems/set-mismatch/submissions/
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        //same as repeating and missing
+        cyclicsort(nums);
+        int[] arr = new int[2];
+        for(int i=0;i<nums.length; i++){
+            if(nums[i]!=i+1){
+                arr[0] = nums[i];
+                arr[1] = i+1;
+            }
+        }
+        return arr;
+    }
+
+    static void cyclicsort(int[] nums){
+        int i = 0;
+        while(i<nums.length){
+            int correctindex = nums[i]-1;
+            if(nums[correctindex] != nums[i]){
+                swap(nums,i,correctindex);
+            }
+            else{
+                i++;
+            }
+        }
+    }
+
+    static void swap(int[] nums,int from, int to){
+        int temp = nums[from];
+        nums[from] = nums[to];
+        nums[to] = temp;
+    }
+}
+
+//https://leetcode.com/problems/max-consecutive-ones/submissions/
+
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int currentcount = 0;
+        int maxtillnow = 0;
+        for(int i=0;i<nums.length; i++){
+            if(nums[i] == 1){
+                currentcount++;
+            }
+            if (nums[i] == 0 || i == (nums.length - 1)){
+                if(currentcount>maxtillnow){
+                    maxtillnow = currentcount;
+                }
+                currentcount = 0;
+            }
+        }
+        return maxtillnow;
+    }
+}
+//https://leetcode.com/problems/single-number/submissions/
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        selectionsort(nums);
+        int oddsum = 0;
+        int totalsum = 0;
+        for(int i =0;i<nums.length; i++){
+            if(i%2 == 0){
+                oddsum += 2 * nums[i];
+            }
+            totalsum += nums[i];
+        }
+        return oddsum - totalsum;
+    }
+
+    public static void selectionsort(int[] arr){
+        for(int i=0; i<arr.length; i++){
+            int lastindexnow = arr.length - i -1;
+            int maxindex = getmaxindex(arr,0,lastindexnow);
+            swap(arr,maxindex,lastindexnow);
+        }
+    }
+    public static void swap(int[] arr,int from,int to ){
+        int temp = arr[from];
+        arr[from] = arr[to];
+        arr[to] = temp;
+    }
+
+    public static int getmaxindex(int[] arr,int start, int last){
+        int max = start;
+        for(int i=start; i<=last; i++){
+            if(arr[max]<arr[i]){
+                max = i;
+            }
+        }
+        return max;
+    }
+}
+
+
+//https://leetcode.com/problems/reverse-integer/submissions/
+
+
+class Solution {
+    public int reverse(int x) {
+        int remember = 0;
+        if(x<0){
+            x = -1 * x;
+            remember = 1;
+        }
+        int currentdigit = 0;
+        double newnumber = 0;
+        while(x>0){
+            currentdigit = x%10;
+            newnumber = 10*newnumber + currentdigit;
+            x = x/10;
+        }
+
+        if(newnumber<Math.pow(2,31)-1){
+            if(remember == 1 && -1*newnumber > -Math.pow(2,31)){
+                return (int)(-1 * newnumber);
+            }
+            return (int)(newnumber);
+        }
+        return 0;
+    }
+}
+
+
+//https://leetcode.com/problems/palindrome-number/submissions/
+
+
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x<0){
+            return false;
+        }
+        int currentdigit = 0;
+        int newnumber = 0;
+        int originalnumber = x;
+        while(x>0){
+            currentdigit = x%10;
+            newnumber = newnumber*10 + currentdigit;
+            x = x/10;
+        }
+        return newnumber==originalnumber;
+    }
+}
+
+//https://leetcode.com/problems/binary-search/submissions/
+
+class Solution {
+    public int search(int[] nums, int target) {
+       return  (binarysearch(nums,target,0,nums.length-1)); 
+    }
+
+
+    static int binarysearch(int[] nums,int target ,int start,int end){
+        if(start>end){
+            return -1;
+        }
+
+        int mid = start + (end-start)/2;
+        
+        if(nums[mid] == target){
+            return mid;
+        }
+        else if(nums[mid] > target){
+            return binarysearch(nums,target,0,mid-1);
+        }
+        return binarysearch(nums,target,mid+1,end);
+    }
+}
+
+//https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/submissions/
+
+class Solution {
+    public int findMin(int[] arr) {
+        int start = 0;
+        int end = arr.length-1;
+        int lowesttillnow = arr[start];
+        while(start<=end){
+            int mid = start + (end - start)/2;
+            //find if left array is sorted or not and store it's lowest value
+            if(arr[mid]>=arr[start]){
+                if(arr[start]<lowesttillnow){
+                lowesttillnow = arr[start];
+                }
+                start = mid + 1;
+            }
+
+            //similarly for right half
+            else if(arr[mid]<= arr[end]){
+                if(arr[mid]<lowesttillnow){
+                    lowesttillnow = arr[mid];
+                }
+                end = mid-1;
+            }
+        }
+            return lowesttillnow;
+    }
+}
+
+
+//https://leetcode.com/problems/search-in-rotated-sorted-array/submissions/
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+        while(start<=end){
+            int mid = start + (end - start)/2;
+            if(nums[mid]== target){
+                return mid;
+            }
+
+            //find in sorted part and eliminate it if not found
+            //left
+            if(nums[mid]>=nums[start])
+            {
+                if(target< nums[mid] && target >= nums[start]){
+                    //remove other right part
+                    end = mid-1;
+                }
+                else{
+                    start = mid + 1;
+                }
+            }
+            if(nums[mid]<=nums[end])
+            {
+                if(target > nums[mid] && target <= nums[end]){
+                    //remove other right part
+                    start = mid+1;
+                }
+                else{
+                    end = mid-1;
+                }
+            }
+        }
+        return -1;
+    }
+}
