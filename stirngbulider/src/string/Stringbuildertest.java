@@ -4,6 +4,9 @@ public class Stringbuildertest {
     public static void main(String[] args) {
         StringBuilder buffer = new StringBuilder(20);
         String pallindrome = "abcdefedcba";
+        char[] arr = new char[1];
+        int where = 1;
+        buffer.append(arr,where,1);
         System.out.println(ispallindrome(pallindrome));
     }
 

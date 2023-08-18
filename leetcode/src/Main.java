@@ -470,3 +470,62 @@ class Solution {
         return -1;
     }
 }
+
+//https://leetcode.com/problems/defanging-an-ip-address/submissions/
+
+class Solution {
+    public String defangIPaddr(String address) {
+        StringBuilder buffer = new StringBuilder(address.length()*2);
+        for(int i=0, k = address.length(); i<k; i++){
+            if(address.charAt(i)=='.'){
+                buffer.append("[.]");
+            }
+            else{
+                buffer.append(address.charAt(i));
+            }
+        }
+        return buffer.toString();
+    }
+}
+
+
+//https://leetcode.com/problems/shuffle-string/submissions/
+
+class Solution {
+    public String restoreString(String s, int[] indices) {
+        StringBuilder buffer = new StringBuilder(s);
+        for(int i=0,k = indices.length; i<k; i++){
+            buffer.setCharAt(indices[i],s.charAt(i));
+        }
+        return buffer.toString();
+    }
+}
+
+//https://leetcode.com/problems/goal-parser-interpretation/submissions/
+
+class Solution {
+    public String interpret(String command) {
+        StringBuilder arr = new StringBuilder();
+
+        for(int i =0; i<command.length(); i++){
+            char getchar = command.charAt(i);
+            if(getchar == 'G'){
+                arr.append("G");
+            }
+            else if(getchar == '('){
+                if(command.charAt(i+1)==')'){
+                    arr.append("o");
+                    i = i+1;
+                }
+                else{
+                    arr.append("al");
+                    i = i+3;
+                }
+            }
+        }
+        return arr.toString();
+    }
+}
+
+
+//
