@@ -528,4 +528,34 @@ class Solution {
 }
 
 
-//
+//https://leetcode.com/problems/fibonacci-number/submissions/
+
+class Solution {
+    public int fib(int n) {
+        if(n<2){
+            return n;
+        }
+        return fib(n-1) + fib(n-2);
+    }
+}
+
+
+//https://leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/submissions/
+
+
+class Solution {
+    public int numberOfSteps(int num) {
+        return helper(num,0);
+    }
+
+    private static int helper(int num ,int count){
+        if(num == 0){
+            return count;
+        }
+        count++;
+        if(num%2 == 0){
+            return helper(num/2,count);
+        }
+        return helper(num-1,count);
+    }
+}
