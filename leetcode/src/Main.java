@@ -582,3 +582,14 @@ class Solution {
         return helper(num1,num2,count);
     }
 }
+
+//https://leetcode.com/problems/power-of-two/submissions/
+
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        if(n<=0){
+            return false;
+        }
+        return ((n & (n-1)) == 0);
+    }
+}
