@@ -639,3 +639,35 @@ class Solution {
         return false;
     }
 }
+
+
+//https://leetcode.com/problems/single-element-in-a-sorted-array/submissions/
+
+
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        if(nums.length == 1 || nums[0] != nums[1]) return nums[0];
+        // if(nums[0]!= nums[1]) return nums[0];
+        int len = nums.length-1;
+        if(nums[len] != nums[len-1]) return nums[len];
+
+        // done with hadellin edge cases now move  on to binary search in this reduced space
+        int start = 1;
+        int end = len-1;
+        while(start<=end){
+            int mid = start + (end-start)/2;
+            if(nums[mid] != nums[mid-1] && nums[mid] != nums[mid+1]) return nums[mid];
+            //now what if this is not the case now comes the elemination part
+            if(mid%2==0 && nums[mid+1]== nums[mid] || mid%2!=0 && nums[mid-1]== nums[mid]) 
+            //this means we are standing on left half but the element of target is on the right half just eleminate the left half move to the right half search space
+            {
+                start = mid + 1;
+            } 
+            else {
+                //i.e. we are on right half so eleminate this right half and reduce the search space to left half only
+                end = mid -1;
+            }
+        }
+        return -1;
+    }
+}
