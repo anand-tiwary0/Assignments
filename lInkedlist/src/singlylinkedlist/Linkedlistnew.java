@@ -102,6 +102,58 @@ public class Linkedlistnew {
     }
 
     //now deletion operations
-    
+    public int deletefirst(){
+        int value = head.value;
+        head = head.next;
+        size = size-1;
+//        System.out.println("size"  + size);
+        return value;
+    }
+
+    public int deletelast(){
+        //
+        if(head.next == null){
+            head = null;
+            return head.value;
+        }
+//        System.out.println("tset size " + size);
+        Node node = getnodebyindex(size-2);
+        int toreturn = node.next.value;
+//        System.out.println(node.value);
+        node.next = null;
+        size = size-1;
+        return toreturn;
+    }
+
+
+    public Node getnodebyindex(int index){
+        Node temp = head;
+        for(int i=0; i<index; i++){
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+
+    public int delete(int index) throws Exception {
+        int value = 0;
+        if (index<0 || index>size-1){
+            throw new Exception("index out of bound for this list");
+        }
+        else{
+            if(index == 0) {
+                return deletefirst();
+            }
+            if(index == size-1){
+                return deletelast();
+            }
+            //otherwise
+            Node utility = getnodebyindex(index-1);
+            value = utility.next.value;
+            utility.next = utility.next.next;
+        }
+        size = size -1;
+        return value;
+    }
 
 }
