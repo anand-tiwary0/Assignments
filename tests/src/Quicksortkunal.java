@@ -29,11 +29,13 @@ public class Quicksortkunal {
         int fp = low;
         int lp = high;
         while(fp<=lp){
-            while(arr[low]<pivot) fp++;
-            while(arr[high]>pivot) lp--;
-            if(low<=high) swap(arr,fp,lp);
-            fp++;
-            lp--;
+            while(arr[fp]<pivot) fp++;
+            while(arr[lp]>pivot) lp--;
+            if(fp<=lp){
+                swap(arr,fp,lp);
+                fp++;
+                lp--;
+            }
         }
         helper(arr,low,lp);
         helper(arr,fp,high);
