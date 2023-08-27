@@ -24,14 +24,14 @@ public class Linkedlistnew {
 
     public void insertfirst(int value){
         Node node = new Node(value);
+        size++;
         if(head == null){
             head = node;
-            node.next = null;
             return;
         }
         node.next = head;
         head = node;
-        size = size+1;
+//        size = size+1;
     }
 
     public void display(){
@@ -49,19 +49,59 @@ public class Linkedlistnew {
 
     public void insertlast(int value){
         Node node = new Node(value);
+        size++;
         if(head == null) {
             insertfirst(value);
-            size++;
             return;
         }
         Node temp = head;
-        while(temp!=null){
+        while(temp.next!=null){
             temp = temp.next;
         }
-        temp = node;
-        node.next = null;
-        size++;
+        temp.next = node;
     }
 
+    public void insert(int index, int value){
+        Node node = new Node(value);
+        size++;
+        if(index==0) {
+            insertfirst(value); return;
+        }
+        if(index == size-1){
+            insertlast(value); return;
+        }
+        Node temp = head;
+        if(index>0 && index<size-1){
+            //then just traverse till the node which is previous and do changes accordingly
+            for(int i=1; i<index;i++){
+                temp = temp.next;
+            }
+            //now we are at the previous index
+            node.next = temp.next;
+            temp.next = node;
+
+        }
+    }
+
+    public void displayrev(){
+        Node temp = head;
+        helper(temp);
+        System.out.println("END");
+    }
+
+    private void helper(Node temp){
+        if(temp == null){
+            return;
+        }
+        if(temp.next == null){
+            System.out.print(temp.value + " -> ");
+            return;
+        }
+        helper(temp.next);
+        System.out.print(temp.value + " -> ");
+    }
+
+    //now deletion operations
+    
 
 }

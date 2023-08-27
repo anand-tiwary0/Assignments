@@ -9,7 +9,10 @@ public class Main {
     list.insertlast(4);
     list.insertlast(5);
     list.insertlast(6);
+    list.insert(2,10);
+    list.insert(5,12);
     list.display();
+    list.displayrev();
     }
 
 }
