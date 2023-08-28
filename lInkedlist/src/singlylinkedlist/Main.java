@@ -11,6 +11,7 @@ public class Main {
     list.insertlast(6);
     list.insert(2,10);
     list.insert(5,12);
+
     list.display();
         System.out.println("first deleted :: ");
         System.out.print(list.deletefirst());
@@ -25,8 +26,12 @@ public class Main {
         System.out.println("inbetween :: ");
         System.out.print(list.delete(2));
         System.out.println();
-    list.display();
-    list.displayrev();
+        list.display();
+        list.displayrev();
+
+        list.insertRec(88,2);
+        list.insertRec(0,0);
+        list.display();
     }
 
 }

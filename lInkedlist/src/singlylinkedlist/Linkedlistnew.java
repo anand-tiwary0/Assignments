@@ -36,7 +36,18 @@ public class Linkedlistnew {
 
     //insert using recursion
     public void insertRec(int val,int index){
-        
+        head = insertRecutil(val,index,this.head);
+    }
+    private Node insertRecutil(int val,int index,Node current){
+        if(index == 0)   //this is the place where we will be inserting
+        {
+            Node temp = new Node(val);
+            temp.next = current;
+            size++;
+            return temp;
+        }
+        current.next = insertRecutil(val,index-1,current.next);
+        return current;
     }
 
     public void display(){
