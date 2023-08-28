@@ -34,6 +34,11 @@ public class Linkedlistnew {
 //        size = size+1;
     }
 
+    //insert using recursion
+    public void insertRec(int val,int index){
+        
+    }
+
     public void display(){
         if(head == null){
             return;
