@@ -26,4 +26,8 @@ class Solution3 {
     }
 }
 
+//https://leetcode.com/problems/lucky-numbers-in-a-matrix/solutions/2739604/java-99-faster-simple-solution/
+
+//https://leetcode.com/problems/plus-one/
+
 
