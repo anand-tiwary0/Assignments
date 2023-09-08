@@ -1,14 +1,14 @@
 package singlylinkedlist;
 
 public class Linkedlistnew {
-    private Node head;
-    private int size;
+    public static Node head;
+    private static int size;
 
     public Linkedlistnew() {
         this.size = 0;
     }
 
-    private class Node{
+    public class Node{
         int value;
         Node next;
 
@@ -99,6 +99,11 @@ public class Linkedlistnew {
         }
     }
 
+    public static Node tail(){
+        Node lastnode = getnodebyindex(size-1);
+        return lastnode;
+    }
+
     public void displayrev(){
         Node temp = head;
         helper(temp);
@@ -142,7 +147,7 @@ public class Linkedlistnew {
     }
 
 
-    public Node getnodebyindex(int index){
+    public static Node getnodebyindex(int index){
         Node temp = head;
         for(int i=0; i<index; i++){
             temp = temp.next;

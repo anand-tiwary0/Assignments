@@ -6,7 +6,12 @@ package leetcode;
       ListNode next;
       ListNode() {}
       ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }}
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+      public static void insertfirst(int val){
+          ListNode newnode = new ListNode(val);
+
+      }
+  }
 
 // https://leetcode.com/problems/remove-duplicates-from-sorted-list/submissions/
 class Solution3 {

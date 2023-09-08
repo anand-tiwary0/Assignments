@@ -12,20 +12,16 @@ public class Bubblesort {
     public static void bubblesort(int[] arr){
         helper(arr,arr.length-1,0);
     }
-
     private static void helper(int[] arr,int row, int col){
         if(row == 0){
             return;
         }
         if(row>col){
             //check if next col element is larger or not if yes then swap else just increase col
-            if(arr[col]>arr[col+1]){
-                swap(arr,col,col+1);
-                helper(arr,row,++col);
+            if(arr[col]>arr[col+1]) {
+                swap(arr, col, col + 1);
             }
-            else{
-                helper(arr,row,++col);
-            }
+            helper(arr,row,++col);
         }
         else{
             row = row -1;
