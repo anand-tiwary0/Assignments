@@ -104,6 +104,19 @@ public class Linkedlistnew {
         return lastnode;
     }
 
+    public static Node tail = tail();
+    //recursive reversal of linked list
+    public static void reverselist(Node node){
+        if(node == null || node == tail){
+            head = node;
+            return;
+        }
+        reverselist(node.next);
+        tail.next = node;
+        node.next = null;
+        tail = node;
+    }
+
     public void displayrev(){
         Node temp = head;
         helper(temp);
