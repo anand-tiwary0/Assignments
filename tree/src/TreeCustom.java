@@ -80,9 +80,50 @@ public class TreeCustom {
         display(root.left,level+1);
     }
 
+    //there are three types of traversal
+    // 1. preorder traversal NODE -> LEFT -> RIGHT
+    public static void preOrderTraversal(Node node){
+        if(node == null){
+            return;
+        }
+        //which ever node we are on just print that node
+        System.out.print(node.value + "->");
+        //thsi will ensure printing of left part
+        preOrderTraversal(node.left);
+        preOrderTraversal(node.right);
+    }
+
+    //now INORDER traversal LEFT -> NODE -> RIGHT
+    public static void inOrderTraversal(Node node){
+        if(node == null){
+            return;
+        }
+        //here first move to most left portion of the tree then print that left portion and
+        ///then node there in and then right portion of the node do this recursivly
+        inOrderTraversal(node.left);
+        System.out.print(node.value + "-->");
+        inOrderTraversal(node.right);
+    }
+
+    //now POST-ORDER TRAVERSAL LEFT -> RIGHT -> NODE
+    public static void postOrderTraversal(Node node){
+        if(node == null){
+            return;
+        }
+        postOrderTraversal(node.left);
+        postOrderTraversal(node.right);
+        System.out.print(node.value + "-->");
+    }
+
     public static void main(String[] args) {
         TreeCustom tree = new TreeCustom();
         tree.populate();
         tree.display();
+        postOrderTraversal(tree.root);
+        System.out.println();
+        inOrderTraversal(tree.root);
+        System.out.println();
+        preOrderTraversal(tree.root);
+        System.out.println();
     }
 }
