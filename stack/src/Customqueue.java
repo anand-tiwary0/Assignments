@@ -1,7 +1,8 @@
 public class Customqueue {
     protected int[] data;
     private static final int DEFAULT_SIZE = 10;
-    int end = 0;  //this is pointing to end of queue we are adding an item then increasing the end
+    int end = 0;  //this is pointing to end of queue we are adding an item
+    // then increasing the end
 
     public Customqueue() {
         this(DEFAULT_SIZE);
