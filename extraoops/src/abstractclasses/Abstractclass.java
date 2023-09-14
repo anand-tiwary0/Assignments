@@ -6,17 +6,14 @@ public abstract class Abstractclass {
     public int a;
     public float varl;
     static int vari;
-
     Abstractclass(int a,float varl){
         this.a = a;
         this.varl = varl;
     }
-
     abstract public void greeting();
     public void greeting(String name){
         System.out.println("hello there " + name);
     }
-
     static void staticmethod(){
         System.out.println("this is from static function inside abstract class");
     }
