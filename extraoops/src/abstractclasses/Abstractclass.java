@@ -10,6 +10,12 @@ public abstract class Abstractclass {
         this.a = a;
         this.varl = varl;
     }
+    public static void testmethod(){
+        System.out.println("this is test method inside Abstarctclass");
+    }
+    public static void restrictiontest(){
+        System.out.println("this function is to test restriction");
+    }
     abstract public void greeting();
     public void greeting(String name){
         System.out.println("hello there " + name);
