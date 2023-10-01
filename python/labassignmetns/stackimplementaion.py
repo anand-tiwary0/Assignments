@@ -35,6 +35,7 @@ def main():
     stack.insert(10)
     stack.insert(199)
     stack.display()
+    print("removed data")
     print(stack.remove())
     print(f"current size of stack is {stack.length()}")
     stack.display()

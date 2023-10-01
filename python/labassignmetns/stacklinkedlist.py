@@ -45,7 +45,7 @@
 #     main()
 from labassignmetns import assignment2b, assignment2a
 
-
+# here linked list from assignment 1 is used as base
 class StackLinked:
     def __init__(self):
         self.list = assignment2a.Linkedlist()
