@@ -105,16 +105,10 @@ public class BinarySearchTree{
         populateSorted(nums,0,mid);
         populateSorted(nums,mid+1,end);
     }
-
-
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
         tree.populate(new int[]{10,3,5,2,8,20});
         tree.displayBetter();
         tree.inOrder();
     }
-
-
-
-
 }
