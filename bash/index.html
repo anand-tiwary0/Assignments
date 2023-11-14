@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File Upload and Preview</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      .header {
+        background: #007bff;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+      }
+
+      .search-bar {
+        background: #333;
+        color: #fff;
+        padding: 10px;
+      }
+
+      .search-bar input[type="text"] {
+        width: 100%;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .file-upload {
+        background: #f0f0f0;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .file-upload-button {
+        margin: 20px;
+        padding: 10px 20px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .file-upload-button:hover {
+        background-color: palevioletred;
+        color: black;
+      }
+
+      .file-input {
+        display: none;
+      }
+
+      .preview-layout {
+        display: none;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .selected-file {
+        padding: 20px;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+        background: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">FileQuest: The Search Expedition</div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+      </div>
+      <div class="file-upload">
+        <label for="file-input" class="file-upload-button">Upload File</label>
+        <input
+          type="file"
+          id="file-input"
+          class="file-input"
+          accept=".pdf,.doc,.docx,.txt"
+          onchange="showSelectedFile(this)"
+        />
+      </div>
+      <div class="preview-layout" id="preview-layout">
+        <div class="selected-file" id="selected-file">
+          Selected File: <span id="file-name"></span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showSelectedFile(input) {
+        const previewLayout = document.getElementById("preview-layout");
+        const fileName = document.getElementById("file-name");
+
+        if (input.files.length > 0) {
+          const file = input.files[0];
+          const fileNameText = file.name;
+
+          fileName.textContent = fileNameText;
+          previewLayout.style.display = "block";
+        } else {
+          fileName.textContent = "";
+          previewLayout.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
+can u make interactive ui for this

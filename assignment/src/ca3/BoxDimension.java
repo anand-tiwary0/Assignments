@@ -1,6 +1,6 @@
 package ca3;
 
-public class BoxDimension {
+public class  BoxDimension {
     float length;
     float breadth;
     float height;
