@@ -1,4 +1,4 @@
-"""
+ """
 Create a single linked list with data and address with following functions:
     1. Traverse each node of the list
     2. Insert a node at the particular position

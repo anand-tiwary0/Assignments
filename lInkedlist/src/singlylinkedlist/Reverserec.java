@@ -14,12 +14,12 @@ public class Reverserec extends Linkedlistnew{
         list.display();
     }
 
-    public static void reverserec(Linkedlistnew list){
+    static void reverserec(Linkedlistnew list){
         Node tail = list.tail();
         helper(list,list.head,tail);
     }
 
-    public static void helper(Linkedlistnew list,Node head,Node tail){
+    static void helper(Linkedlistnew list,Node head,Node tail){
         Node temp = head;
         if(temp == tail){
             head = temp;

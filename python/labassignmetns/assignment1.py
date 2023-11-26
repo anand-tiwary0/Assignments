@@ -59,7 +59,7 @@ def main():
     tupleofsplittedarray = arrobj.split_array(y,arrobj.getlength()[1]-y)
     for i in tupleofsplittedarray:
         print(i)
-    x = int(input("enter the numbet to find it's frequency :: "))
+    x = int(input("enter the number to find it's frequency :: "))
     frequency = arrobj.frequency_of_element(x)
     print(f"frequency of {x} is {frequency}")
 

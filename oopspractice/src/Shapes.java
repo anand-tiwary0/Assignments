@@ -7,8 +7,11 @@ import java.awt.event.MouseEvent;
 
 public class Shapes extends Applet {
     private int shapeNow = 0;
+    //this variable will be used to get status for current shape
+
 
     public void init(){
+        //change shape after mouse click
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -19,6 +22,7 @@ public class Shapes extends Applet {
     }
 
     public void paint(Graphics g){
+        //drawing various shapes
         switch (shapeNow){
             case 0: {
                 //rectangle shape
@@ -48,5 +52,4 @@ public class Shapes extends Applet {
             }
         }
     }
-
 }
