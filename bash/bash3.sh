@@ -56,13 +56,13 @@ read -p "Enter second number: " num2
 
 # Perform arithmetic operations
 sum=$(echo "scale=2; $num1+$num2" | bc)
-difference=$((num1 - num2))
-product=$((num1 * num2))
+difference=$(($num1 - $num2))
+product=$(($num1 * $num2))
 
 # Check if num2 is not zero to avoid division by zero
-if [ "$num2" -ne 0 ]; then
+if [ $num2 -ne 0 ]; then
     division=$(echo "scale=2; $num1 / $num2" | bc)
-    remainder=$((num1 % num2))
+    remainder=$(($num1 % $num2))
 else
     division="Undefined (division by zero)"
     remainder="Undefined (division by zero)"
