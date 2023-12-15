@@ -25,6 +25,7 @@ class Student{
 }
 
 class Polytest extends Student{
+    @Override
     void greet(){
         //when obj of this type is created then this function will be called
         //even if the reference var is of type superclass (here student)

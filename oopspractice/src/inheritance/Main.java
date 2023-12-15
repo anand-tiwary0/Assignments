@@ -14,17 +14,17 @@ public class Main {
         Boxweight box4 = new Boxweight(12,23,42,32);
 
 
-        //now here comes intresting part where the var type which is used to reference to object is different from
+        //now here comes interesting part where the var type which is used to reference to object is different from
 
         Box box5 = new Boxweight(2,3,4,5);
         //what box5 can access depends upon type of var here box5 var can access l,h,w only not weight because weight is
         //not it's property
         System.out.println(box5);
         Boxweight box6 = new Boxweight();
-        box6.overridetest();  //this work find because here no parent is involved
+        Boxweight.overridetest();  //this work find because here no parent is involved
 
         Box box7 = new Boxweight();
-        box7.overridetest();  //we can inherit but we can't override like you can run but you can't hide
+        Box.overridetest();  //we can inherit but we can't override like you can run but you can't hide
     }
 
 }
